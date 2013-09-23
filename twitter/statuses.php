@@ -60,7 +60,7 @@ class Statuses {
 	 * @param  array $qs query string parameters
 	 * @return string a string of JSON
 	 */
-	public function get($path = 'statuses/user_timeline', $qs)
+	public function get($path = 'statuses/user_timeline', $qs = array())
 	{
 		$json = $this->request(array(
 			CURLOPT_HTTPHEADER => array(
