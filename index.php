@@ -1,9 +1,9 @@
 <?php 
 
 require_once 'credentials.php';
-require_once 'twitter/status.php';
+require_once 'twitter/statuses.php';
 
-$twitter = new Twitter\Status(array(
+$twitter = new Twitter\Statuses(array(
 	'consumer_key' => CONSUMER_KEY,
 	'secret' => SECRET
 ));

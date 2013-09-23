@@ -2,7 +2,7 @@
 
 namespace Twitter;
 
-class Status {
+class Statuses {
 	const AUTH_URL = 'https://api.twitter.com/oauth2/token';
 	const API_ENDPOINT = 'https://api.twitter.com/1.1/';
 
