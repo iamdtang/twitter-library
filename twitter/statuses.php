@@ -8,7 +8,7 @@ class Statuses {
 
 	protected $consumer_key;
 	protected $secret;
-	protected $_bearer_token;
+	protected $bearer_token;
 
 	protected function request($options)
 	{
@@ -27,7 +27,7 @@ class Statuses {
 		$this->secret = $credentials['secret'];
 
 		if (array_key_exists('bearer_token', $credentials)) {
-			$this->_bearer_token = $credentials['bearer_token'];
+			$this->bearer_token = $credentials['bearer_token'];
 		}
 	}
 
@@ -50,7 +50,7 @@ class Statuses {
 	  ));
 
 		$json_obj = json_decode($json);
-		$this->_bearer_token = $json_obj->access_token;
+		$this->bearer_token = $json_obj->access_token;
 		return $this;
 	}
 
@@ -64,7 +64,7 @@ class Statuses {
 	{
 		$json = $this->request(array(
 			CURLOPT_HTTPHEADER => array(
-				'Authorization: Bearer ' . $this->_bearer_token,
+				'Authorization: Bearer ' . $this->bearer_token,
 				'Host: api.twitter.com',
 				'Content-type: application/x-www-form-urlencoded;charset=UTF-8'
 			),
@@ -77,11 +77,11 @@ class Statuses {
 
 	public function getBearerToken()
 	{
-		return $this->_bearer_token;
+		return $this->bearer_token;
 	}
 
 	public function setBearerToken($bt)
 	{
-		$this->_bearer_token = $bt;
+		$this->bearer_token = $bt;
 	}
 }
