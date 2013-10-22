@@ -2,7 +2,7 @@
 
 namespace Twitter;
 
-class Statuses extends Base
+class Search extends Base
 {
 	
 

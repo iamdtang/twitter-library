@@ -1,7 +1,13 @@
 <?php 
 
+/**
+ * GET statuses/user_timeline
+ * https://dev.twitter.com/docs/api/1.1/get/statuses/user_timeline
+ */
+
 require_once 'credentials.php';
-require_once 'twitter/statuses.php';
+require_once 'Twitter/Base.php';
+require_once 'Twitter/Statuses.php';
 
 $twitter = new Twitter\Statuses(array(
 	'consumer_key' => CONSUMER_KEY,
