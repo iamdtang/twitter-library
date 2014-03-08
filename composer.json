@@ -1,6 +1,6 @@
 {
-  "name": "Tang/TwitterApi",
-  "description": "Classes that interface with the Twitter API using Application-only authentication",
+  "name": "Tang/TwitterRestApi",
+  "description": "Classes that interface with Twitter REST API v1.1 using Application-only authentication",
   "keywords": ["Twitter API"],
   "authors": [
     {

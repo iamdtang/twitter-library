@@ -1,21 +1,21 @@
 <?php
 
-namespace Tang\TwitterApi;
+namespace Tang\TwitterRestApi;
 
-abstract class Base
+class TwitterApi
 {
     const AUTH_URL = 'https://api.twitter.com/oauth2/token';
     const API_ENDPOINT = 'https://api.twitter.com/1.1/';
 
-    protected $consumer_key;
-    protected $secret;
+    protected $api_key;
+    protected $api_secret;
     protected $bearer_token;
     protected $last_url;
 
     public function __construct(array $credentials)
     {
-        $this->consumer_key = $credentials['consumer_key'];
-        $this->secret = $credentials['secret'];
+        $this->api_key = $credentials['api_key'];
+        $this->api_secret = $credentials['api_secret'];
 
         if (array_key_exists('bearer_token', $credentials)) {
             $this->bearer_token = $credentials['bearer_token'];
@@ -29,7 +29,7 @@ abstract class Base
             return $this;
         }
 
-        $composite_key = rawurlencode($this->consumer_key) . ':' . rawurlencode($this->secret);
+        $composite_key = rawurlencode($this->api_key) . ':' . rawurlencode($this->api_secret);
         $base64 = base64_encode($composite_key);
 
         $json = $this->request(
@@ -57,7 +57,7 @@ abstract class Base
         $ch = curl_init();
         curl_setopt_array($ch, $options);
         $json = curl_exec($ch);
-        $info = curl_getinfo($ch);
+//        $info = curl_getinfo($ch);
         curl_close($ch);
 
         return $json;
@@ -84,19 +84,19 @@ abstract class Base
      * @param  array $qs query string parameters
      * @return string a string of JSON
      */
-    public function get($path = 'statuses/user_timeline', $qs = array())
+    public function get($path = 'statuses/user_timeline', $qs = [])
     {
         $this->last_url = self::API_ENDPOINT . $path . '.json?' . http_build_query($qs);
         $json = $this->request(
-          array(
-            CURLOPT_HTTPHEADER => array(
+          [
+            CURLOPT_HTTPHEADER => [
               'Authorization: Bearer ' . $this->bearer_token,
               'Host: api.twitter.com',
               'Content-type: application/x-www-form-urlencoded;charset=UTF-8'
-            ),
+            ],
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_URL => $this->last_url
-          )
+          ]
         );
 
         return $json;

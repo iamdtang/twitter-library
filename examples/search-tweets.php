@@ -6,17 +6,16 @@
  */
 
 require_once __DIR__ . '/credentials.php';
-require_once __DIR__ . '/../src/Tang/TwitterApi/Base.php';
-require_once __DIR__ . '/../src/Tang/TwitterApi/Search.php';
+require_once __DIR__ . '/../src/Tang/TwitterRestApi/TwitterApi.php';
 
-$twitterSearch = new Tang\TwitterApi\Search(array(
-	'consumer_key' => CONSUMER_KEY,
-	'secret' => SECRET
-));
+$twitterSearch = new Tang\TwitterRestApi\TwitterApi([
+	'api_key' => API_KEY,
+	'api_secret' => API_SECRET
+]);
 
-$json = $twitterSearch->authenticate()->get('search/tweets', array(
+$json = $twitterSearch->authenticate()->get('search/tweets', [
 	'q' => 'laravel'
-));
+]);
 
 echo $json;
 // echo $twitterSearch>getLastUrl();

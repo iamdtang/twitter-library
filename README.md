@@ -8,40 +8,35 @@ Currently this library only supports [application-only authentication](https://d
 #### Searching tweets
 
 ```php
-$twitterSearch = new Tang\TwitterApi\Search(array(
-	'consumer_key' => CONSUMER_KEY,
-	'secret' => SECRET
-));
+$twitterSearch = new Tang\TwitterRestApi\TwitterApi([
+	'api_key' => API_KEY,
+	'api_secret' => API_SECRET
+]);
 
-$json = $twitterSearch->authenticate()->get('search/tweets', array(
+$json = $twitterSearch->authenticate()->get('search/tweets', [
 	'q' => 'laravel'
-));
+]);
 ```
 
 #### Getting a user's timeline
 
 ```php
-$twitterApi = new Tang\TwitterApi\Statuses(array(
-	'consumer_key' => CONSUMER_KEY,
-	'secret' => SECRET
-));
+$twitterApi = new Tang\TwitterRestApi\TwitterApi([
+	'api_key' => API_KEY,
+	'api_secret' => API_SECRET
+]);
 
-$json = $twitterApi->authenticate()->get('statuses/user_timeline', array(
+$json = $twitterApi->authenticate()->get('statuses/user_timeline', [
 	'screen_name' => 'uscitp',
 	'count' => 10,
 	'exclude_replies' => true
-));
+]);
 ```
+
+You can pass in any application level base route to the get method along with query string params passed as an array.
 
 ### Working Examples
 
 See the examples folder for working examples
-
-### Extending the library
-
-1. Create a class that extends from Tang\TwitterApi\Base (see Search and Statuses for example classes)
-2. Create an object passing in your application information (see Search and Statuses demos)
-3. Call the _authenticate_ method
-4. Call the _get(string $endpoint, array $qs)_ method
 
 
