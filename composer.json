@@ -1,5 +1,5 @@
 {
-  "name": "Tang/TwitterRestApi",
+  "name": "tang/twitter-rest-api",
   "description": "Classes that interface with Twitter REST API v1.1 using Application-only authentication",
   "keywords": ["Twitter API"],
   "authors": [
