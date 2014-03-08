@@ -1,2 +1,3 @@
-credentials.php
+examples/credentials.php
 .DS_Store
+.idea

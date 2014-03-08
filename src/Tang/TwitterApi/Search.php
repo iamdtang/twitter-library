@@ -1,9 +1,9 @@
 <?php
 
-namespace Twitter;
+namespace Tang\TwitterApi;
 
 class Search extends Base
 {
-	
+
 
 }

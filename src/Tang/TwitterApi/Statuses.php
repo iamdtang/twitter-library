@@ -1,6 +1,6 @@
 <?php
 
-namespace Twitter;
+namespace Tang\TwitterApi;
 
 class Statuses extends Base
 {

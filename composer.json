@@ -1,0 +1,14 @@
+{
+  "name": "Tang/TwitterApi",
+  "description": "Classes that interface with the Twitter API using Application-only authentication",
+  "keywords": ["Twitter API"],
+  "authors": [
+    {
+      "name": "David Tang",
+      "email": "dtang859@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.4.0"
+  }
+}

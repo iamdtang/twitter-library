@@ -1,26 +1,45 @@
-### The start of a Twitter API library in PHP
+Twitter API Library for Applications
+====================================
 
-#### Setup
+Visit [https://dev.twitter.com/apps/](https://dev.twitter.com/apps/) to define an application on Twitter and save your API key information.
 
-1. go to [https://dev.twitter.com/apps/](https://dev.twitter.com/apps/) to define an application on Twitter
-2. create a file called credentials.php
-3. define the 2 following constants in credentials.php
+Currently this library only supports [application-only authentication](https://dev.twitter.com/docs/auth/application-only-auth). This means that any request to the API for endpoints that require user context, such as posting tweets, __will not work__.
+
+#### Searching tweets
 
 ```php
-define("CONSUMER_KEY", "ENTER YOUR VALUE HERE");
-define("SECRET", "ENTER YOUR VALUE HERE");
+$twitterSearch = new Tang\TwitterApi\Search(array(
+	'consumer_key' => CONSUMER_KEY,
+	'secret' => SECRET
+));
+
+$json = $twitterSearch->authenticate()->get('search/tweets', array(
+	'q' => 'laravel'
+));
 ```
 
-Once you have completed the above, run any of the examples below which are using [application-only authentication](https://dev.twitter.com/docs/auth/application-only-auth).
+#### Getting a user's timeline
 
-* search-tweets.php
-* statuses-user_timeline.php
+```php
+$twitterApi = new Tang\TwitterApi\Statuses(array(
+	'consumer_key' => CONSUMER_KEY,
+	'secret' => SECRET
+));
 
-[Twitter REST API 1.1 Docs](https://dev.twitter.com/docs/api/1.1)
+$json = $twitterApi->authenticate()->get('statuses/user_timeline', array(
+	'screen_name' => 'uscitp',
+	'count' => 10,
+	'exclude_replies' => true
+));
+```
+
+### Working Examples
+
+See the examples folder for working examples
 
 ### Extending the library
 
-1. Create a class that extends from Twitter\Base (see Search and Statuses for example classes)
+1. Create a class that extends from Tang\TwitterApi\Base (see Search and Statuses for example classes)
 2. Create an object passing in your application information (see Search and Statuses demos)
 3. Call the _authenticate_ method
 4. Call the _get(string $endpoint, array $qs)_ method
