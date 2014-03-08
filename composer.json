@@ -9,6 +9,11 @@
       "email": "dtang859@gmail.com"
     }
   ],
+  "autoload": {
+        "psr-0": {
+            "Tang\\TwitterRestApi": "src/"
+        }
+    },
   "require": {
     "php": ">=5.4.0"
   }
