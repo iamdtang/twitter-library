@@ -1,6 +1,14 @@
 Twitter API Library for Applications
 ====================================
 
+### Install
+
+You can install this package through Composer:
+
+https://packagist.org/packages/tang/twitter-rest-api
+
+### Getting Started
+
 Visit [https://dev.twitter.com/apps/](https://dev.twitter.com/apps/) to define an application on Twitter and save your API key information.
 
 Currently this library only supports [application-only authentication](https://dev.twitter.com/docs/auth/application-only-auth). This means that any request to the API for endpoints that require user context, such as posting tweets, __will not work__.
