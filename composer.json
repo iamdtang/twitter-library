@@ -1,5 +1,6 @@
 {
   "name": "tang/twitter-rest-api",
+  "license": "MIT",
   "description": "Classes that interface with Twitter REST API v1.1 using Application-only authentication",
   "keywords": ["Twitter API"],
   "authors": [
