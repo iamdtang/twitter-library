@@ -13,10 +13,14 @@ $twitterApi = new Tang\TwitterRestApi\TwitterApi([
 	'api_secret' => API_SECRET
 ]);
 
-$json = $twitterApi->authenticate()->get('statuses/user_timeline', [
+$twitterApi->authenticate();
+
+$json = $twitterApi->get('statuses/user_timeline', [
 	'screen_name' => 'uscitp',
 	'count' => 10,
 	'exclude_replies' => true
-]);
+], true);
 
-echo $json;
+
+// echo $json;
+var_dump($json);

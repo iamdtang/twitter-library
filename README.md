@@ -26,6 +26,8 @@ $json = $twitterSearch->authenticate()->get('search/tweets', [
 ]);
 ```
 
+You can pass in a 3rd argument to the TwitterApi::get() and this will return the JSON decoded.
+
 #### Getting a user's timeline
 
 ```php

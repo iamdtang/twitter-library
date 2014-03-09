@@ -84,7 +84,7 @@ class TwitterApi
      * @param  array $qs query string parameters
      * @return string a string of JSON
      */
-    public function get($path = 'statuses/user_timeline', $qs = [])
+    public function get($path = 'statuses/user_timeline', $qs = [], $decoded = false)
     {
         $this->last_url = self::API_ENDPOINT . $path . '.json?' . http_build_query($qs);
         $json = $this->request(
@@ -99,7 +99,7 @@ class TwitterApi
           ]
         );
 
-        return $json;
+        return ($decoded ? json_decode($json) : $json);
     }
 
     /**
